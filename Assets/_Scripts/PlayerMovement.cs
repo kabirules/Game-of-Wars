@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour {
     float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 
     private float rotation = 0f;
+    private float h;
+    private float v;
+    private bool attack = false;
 
     // Use this for initialization
     void Start () {
@@ -37,11 +40,24 @@ public class PlayerMovement : MonoBehaviour {
         playerTransform = GetComponent<Transform>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate () {
-        float h;
-        float v;
-        bool attack = false;
+    void Update()
+    {
+        // Move the player around the scene.
+        Move(h, v);
+
+        // Turn the player to face the mouse cursor.
+        Turning(h, v);
+
+        if (attack)
+        {
+            Shoot();
+            attack = false;
+        }
+    }
+
+        // Update is called once per frame
+    void FixedUpdate ()
+    {
 
         //Attack
         if (TCKInput.GetButtonDown("Button0") && Time.time > nextFire)
@@ -58,18 +74,7 @@ public class PlayerMovement : MonoBehaviour {
         h = TCKInput.GetAxis("Joystick0", AxisType.X);
         v = TCKInput.GetAxis("Joystick0", AxisType.Y);
 #endif
-        Debug.Log("h: " + h + " v: " + v);
 
-        // Move the player around the scene.
-        Move(h, v);
-
-        // Turn the player to face the mouse cursor.
-        Turning(h, v);
-
-        if (attack) 
-        {
-            Shoot();
-        }
     }
 
     void Move(float h, float v)
@@ -93,6 +98,7 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 facingrotation = Vector3.Normalize(new Vector3(h, 0f, v));
         if (facingrotation != Vector3.zero)         //This condition prevents from spamming "Look rotation viewing vector is zero" when not moving.
             transform.forward = facingrotation;
+  
     }
 
     void Shoot() 
