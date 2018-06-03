@@ -7,6 +7,11 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed = 2f;            // The speed that the player will move at.
 
+    public GameObject bullet;
+    public Transform bulletSpawn;
+    public float fireRate;
+    private float nextFire;
+
     Vector3 movement;                   // The vector to store the direction of the player's movement.
     Animator anim;                      // Reference to the animator component.
     Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
@@ -39,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
         bool attack = false;
 
         //Attack
-        if (TCKInput.GetButtonDown("Button0"))
+        if (TCKInput.GetButtonDown("Button0") && Time.time > nextFire)
         {
             attack = true;
         }
@@ -60,6 +65,11 @@ public class PlayerMovement : MonoBehaviour {
 
         // Turn the player to face the mouse cursor.
         Turning(h, v);
+
+        if (attack) 
+        {
+            Shoot();
+        }
     }
 
     void Move(float h, float v)
@@ -83,6 +93,12 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 facingrotation = Vector3.Normalize(new Vector3(h, 0f, v));
         if (facingrotation != Vector3.zero)         //This condition prevents from spamming "Look rotation viewing vector is zero" when not moving.
             transform.forward = facingrotation;
+    }
+
+    void Shoot() 
+    {
+        nextFire = Time.time + fireRate;
+        Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
     }
 
 
