@@ -6,16 +6,44 @@ public class EnemyController : MonoBehaviour {
 
     public float movementSpeed;
 
-	// Use this for initialization
-	void Start () {
-        GameObject[] playerArray = GameObject.FindGameObjectsWithTag("Player");
-        GameObject target = playerArray[0];
-        Transform targetTransform = target.GetComponent(typeof(Transform)) as Transform;
-        transform.LookAt(targetTransform.position, transform.up);
-	}
+    public GameObject enemyBullet;
+    public Transform enemyBulletSpawn;
+    public float fireRate = 1f;
+    private float nextFire;
+
+    // Use this for initialization
+    void Start () {
+        StartCoroutine(FacePlayer());
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         transform.position += transform.forward * Time.deltaTime * movementSpeed;
-	}
+        if (Time.time > nextFire)
+        {
+            Shoot();
+        }
+    }
+
+    IEnumerator FacePlayer()
+    {
+        yield return new WaitForSeconds(5f);
+        while (true)
+        {
+            GameObject[] playerArray = GameObject.FindGameObjectsWithTag("Player");
+            GameObject target = playerArray[0];
+            Transform targetTransform = target.GetComponent(typeof(Transform)) as Transform;
+            transform.LookAt(targetTransform.position, transform.up);
+            yield return new WaitForSeconds(5f);
+        }
+    }
+
+    void Shoot()
+    {
+        nextFire = Time.time + fireRate;
+        if (enemyBullet != null)
+        {
+            Instantiate(enemyBullet, enemyBulletSpawn.position, enemyBulletSpawn.rotation);
+        }
+    }
 }
