@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour {
 
     IEnumerator FacePlayer()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(0f);
         while (true)
         {
             GameObject[] playerArray = GameObject.FindGameObjectsWithTag("Player");

@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour {
     public float startWait;
     public float waveWait;
 
+    public EnemyManager[] m_Enemies;
+
     void Start()
     {
         StartCoroutine(SpawnWaves());
