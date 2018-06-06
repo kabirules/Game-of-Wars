@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
     public float waveWait;
 
     public CameraControl m_CameraControl; 
+    public EnemyController m_EnemyController;
 
     //public EnemyManager[] m_Enemies;
     public List<EnemyManager> m_Enemies = new List<EnemyManager>();
@@ -46,11 +47,12 @@ public class GameController : MonoBehaviour {
                 Quaternion spawnRotation = Quaternion.identity;
                 GameObject newEnemy = Instantiate(hazard, spawnPosition, spawnRotation) as GameObject;
                 enemyNumber++;
-                Debug.Log(enemyNumber);
                 EnemyManager em = new EnemyManager();
                 em.m_Instance = newEnemy;
                 em.m_PlayerNumber = enemyNumber;
                 m_Enemies.Add(em);
+                EnemyController enemyController = newEnemy.GetComponent<EnemyController>();
+                enemyController.enemyNumber = enemyNumber;
                 //m_Enemies[enemyNumber].m_Instance = newEnemy;
                 //m_Enemies[enemyNumber].m_PlayerNumber = enemyNumber;
                 SetCameraTargets();
@@ -61,8 +63,15 @@ public class GameController : MonoBehaviour {
     }
 
     private void SetCameraTargets()
-    {
-        Transform[] targets = new Transform[m_Enemies.Count];
+    {   
+        int x = 0;
+        for (int i = 0; i < m_Enemies.Count; i++)
+        {
+            if (m_Enemies[i].m_Instance != null) {
+                x++;
+            }
+        }
+        Transform[] targets = new Transform[x];//m_Enemies.Count];
 
         for (int i = 0; i < targets.Length; i++)
         {

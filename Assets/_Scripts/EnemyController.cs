@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour {
     public float fireRate = 1f;
     private float nextFire;
 
+    public int enemyNumber;
+
     // Use this for initialization
     void Start () {
         StartCoroutine(FacePlayer());
