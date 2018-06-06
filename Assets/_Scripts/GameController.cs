@@ -11,10 +11,24 @@ public class GameController : MonoBehaviour {
     public float startWait;
     public float waveWait;
 
-    public EnemyManager[] m_Enemies;
+    public CameraControl m_CameraControl; 
+
+    //public EnemyManager[] m_Enemies;
+    public List<EnemyManager> m_Enemies = new List<EnemyManager>();
+    private int enemyNumber = 0; // Assign a number to every enemy. The player will be number 0.
 
     void Start()
     {
+        // Add the player in the array to set the camera position/rotation
+        GameObject[] playerArray = GameObject.FindGameObjectsWithTag("Player");
+        GameObject player = playerArray[0];
+        //m_Enemies[enemyNumber].m_Instance = player;
+        //m_Enemies[enemyNumber].m_PlayerNumber = enemyNumber;
+        EnemyManager em = new EnemyManager();
+        em.m_Instance = player;
+        em.m_PlayerNumber = enemyNumber;
+        m_Enemies.Add(em);
+
         StartCoroutine(SpawnWaves());
     }
 
@@ -25,14 +39,35 @@ public class GameController : MonoBehaviour {
         {
             for (int i = 0; i < hazardCount; i++)
             {
+                //Instantiate a new enemy
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), 
                                                     spawnValues.y, 
                                                     Random.Range(-spawnValues.z, spawnValues.z));
                 Quaternion spawnRotation = Quaternion.identity;
-                Instantiate(hazard, spawnPosition, spawnRotation);
+                GameObject newEnemy = Instantiate(hazard, spawnPosition, spawnRotation) as GameObject;
+                enemyNumber++;
+                Debug.Log(enemyNumber);
+                EnemyManager em = new EnemyManager();
+                em.m_Instance = newEnemy;
+                em.m_PlayerNumber = enemyNumber;
+                m_Enemies.Add(em);
+                //m_Enemies[enemyNumber].m_Instance = newEnemy;
+                //m_Enemies[enemyNumber].m_PlayerNumber = enemyNumber;
+                SetCameraTargets();
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
         }
     }
+
+    private void SetCameraTargets()
+    {
+        Transform[] targets = new Transform[m_Enemies.Count];
+
+        for (int i = 0; i < targets.Length; i++)
+        {
+            targets[i] = m_Enemies[i].m_Instance.transform;
+        }
+        m_CameraControl.m_Targets = targets;
+    }    
 }
