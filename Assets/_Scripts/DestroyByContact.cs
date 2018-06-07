@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class DestroyByContact : MonoBehaviour {
 
+	public GameObject blood;
 	private GameController gameController;
 	private EnemyManager playerEM;
 
 	// Use this for initialization
 	void Start () {
 		// Get player to replace it by the dead enemy in the enemies list
-        GameObject[] playerArray = GameObject.FindGameObjectsWithTag("Player");
-        GameObject player = playerArray[0];
-        playerEM = new EnemyManager();
-        playerEM.m_Instance = player;
+		this.playerEM = GetPlayerEM();
 	
 		gameController = RetrieveGameController();
 	}
@@ -42,11 +40,14 @@ public class DestroyByContact : MonoBehaviour {
 				gameController = RetrieveGameController();
 			}
 			// Replace the killed enemy by the player
-			playerEM.m_PlayerNumber = enemyManager.enemyNumber;
-			gameController.m_Enemies[enemyManager.enemyNumber]=playerEM;
+			if (this.playerEM==null) {
+				this.playerEM = GetPlayerEM();
+			}
+			this.playerEM.m_PlayerNumber = enemyManager.enemyNumber;
+			gameController.m_Enemies[enemyManager.enemyNumber]=this.playerEM;
 			// Destroy object, but play dead animation first
 			Destroy(other.gameObject);
-            //Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+            Instantiate(blood, other.transform.position, other.transform.rotation);
             //gameController.GameOver ();
         }		
         //Destroy(other.gameObject);
@@ -67,5 +68,14 @@ public class DestroyByContact : MonoBehaviour {
         GameObject gameControllerObj = gameControllerArray[0];
 		gameController = gameControllerObj.GetComponent<GameController>();
 		return gameController;
+	}
+
+	private EnemyManager GetPlayerEM()
+	{
+		GameObject[] playerArray = GameObject.FindGameObjectsWithTag("Player");
+        GameObject player = playerArray[0];
+        playerEM = new EnemyManager();
+        playerEM.m_Instance = player;
+		return playerEM;
 	}
 }
