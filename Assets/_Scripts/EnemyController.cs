@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyController : MonoBehaviour {
 
@@ -13,6 +14,8 @@ public class EnemyController : MonoBehaviour {
 
     public int enemyNumber;
 
+    public Boolean isKilled;
+
     // Use this for initialization
     void Start () {
         StartCoroutine(FacePlayer());
@@ -20,10 +23,15 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        transform.position += transform.forward * Time.deltaTime * movementSpeed;
-        if (Time.time > nextFire)
+        if (!isKilled)
         {
-            Shoot();
+            transform.position += transform.forward * Time.deltaTime * movementSpeed;
+            if (Time.time > nextFire)
+            {
+                Shoot();
+            }
+        } else {
+            // nothing by now.. just won't move or shot. Play dead animation
         }
     }
 

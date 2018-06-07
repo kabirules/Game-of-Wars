@@ -35,7 +35,7 @@ public class DestroyByContact : MonoBehaviour {
         }
         if (other.tag == "Enemy")
         {
-			EnemyController enemyManager = other.gameObject.GetComponent<EnemyController>();
+			EnemyController EnemyController = other.gameObject.GetComponent<EnemyController>();
 			if (gameController == null) {
 				gameController = RetrieveGameController();
 			}
@@ -43,10 +43,11 @@ public class DestroyByContact : MonoBehaviour {
 			if (this.playerEM==null) {
 				this.playerEM = GetPlayerEM();
 			}
-			this.playerEM.m_PlayerNumber = enemyManager.enemyNumber;
-			gameController.m_Enemies[enemyManager.enemyNumber]=this.playerEM;
-			// Destroy object, but play dead animation first
-			Destroy(other.gameObject);
+			this.playerEM.m_PlayerNumber = EnemyController.enemyNumber;
+			gameController.m_Enemies[EnemyController.enemyNumber]=this.playerEM;
+			// Destroy object, but play dead animation first. Will be destroyed in EnemyController
+			EnemyController.isKilled = true;
+			//Destroy(other.gameObject);
             Instantiate(blood, other.transform.position, other.transform.rotation);
             //gameController.GameOver ();
         }		
