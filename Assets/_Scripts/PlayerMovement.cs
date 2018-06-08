@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Move(float h, float v)
     {
+        Debug.Log("h -> " + h + " v -> " + v);
         // Set the movement vector based on the axis input.
         movement.Set(h, 0f, v);
 
@@ -87,10 +88,12 @@ public class PlayerMovement : MonoBehaviour {
 
         // Avoid the player to 'fly'
         Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        if (newPosition.y > 0)
+        if (newPosition.y > 0.5f)
             newPosition = new Vector3(transform.position.x, 0.5f, transform.position.z);
         // Move the player to it's current position plus the movement.
         playerRigidbody.MovePosition(newPosition + movement);
+        Debug.Log("newPosition -> " + newPosition);
+        Debug.Log("movement -> " + movement);
     }
 
     void Turning(float h, float v)

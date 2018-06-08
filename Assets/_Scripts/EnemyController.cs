@@ -31,7 +31,15 @@ public class EnemyController : MonoBehaviour {
                 Shoot();
             }
         } else {
-            // nothing by now.. just won't move or shot. Play dead animation
+            // Enemy is dead, make it smaller until is almost invisble and destroy it.
+            GetComponent<Animator>().enabled = false;
+            Vector3 scale = transform.localScale;
+            Vector3 newScale = new Vector3(scale.x*0.95f, scale.y*0.95f, scale.z*0.95f);
+            transform.localScale = newScale;
+            if (newScale.x < 0.1f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

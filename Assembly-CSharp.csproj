@@ -51,6 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scripts\CameraControl.cs" />
+     <Compile Include="Assets\_Scripts\DestroyByContact.cs" />
+     <Compile Include="Assets\_Scripts\DestroyByTime.cs" />
      <Compile Include="Assets\_Scripts\EnemyController.cs" />
      <Compile Include="Assets\_Scripts\EnemyManager.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
@@ -100,7 +103,6 @@
      <Compile Include="Assets\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
-     <Compile Include="Assets\Scripts\Camera\CameraControl.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\TankManager.cs" />
      <Compile Include="Assets\Scripts\Shell\ShellExplosion.cs" />
