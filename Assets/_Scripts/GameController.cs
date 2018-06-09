@@ -18,17 +18,12 @@ public class GameController : MonoBehaviour {
     public List<EnemyManager> m_Enemies = new List<EnemyManager>();
     private int enemyNumber = 0; // Assign a number to every enemy. The player will be number 0.
 
+    public bool playerKilled;
+
     void Start()
     {
         // Add the player in the array to set the camera position/rotation
-        GameObject[] playerArray = GameObject.FindGameObjectsWithTag("Player");
-        GameObject player = playerArray[0];
-        //m_Enemies[enemyNumber].m_Instance = player;
-        //m_Enemies[enemyNumber].m_PlayerNumber = enemyNumber;
-        EnemyManager em = new EnemyManager();
-        em.m_Instance = player;
-        em.m_PlayerNumber = enemyNumber;
-        m_Enemies.Add(em);
+        AddPlayer();
 
         StartCoroutine(SpawnWaves());
     }
@@ -36,9 +31,9 @@ public class GameController : MonoBehaviour {
     IEnumerator SpawnWaves()
     {
         yield return new WaitForSeconds(startWait);
-        while (true)
-        {
-            for (int i = 0; i < hazardCount; i++)
+       // while (!playerKilled)
+       // {
+            for (int i = 0; i < hazardCount && !playerKilled; i++)
             {
                 //Instantiate a new enemy
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), 
@@ -53,13 +48,11 @@ public class GameController : MonoBehaviour {
                 m_Enemies.Add(em);
                 EnemyController enemyController = newEnemy.GetComponent<EnemyController>();
                 enemyController.enemyNumber = enemyNumber;
-                //m_Enemies[enemyNumber].m_Instance = newEnemy;
-                //m_Enemies[enemyNumber].m_PlayerNumber = enemyNumber;
                 SetCameraTargets();
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
-        }
+      //  }
     }
 
     private void SetCameraTargets()
@@ -78,5 +71,24 @@ public class GameController : MonoBehaviour {
             targets[i] = m_Enemies[i].m_Instance.transform;
         }
         m_CameraControl.m_Targets = targets;
-    }    
+    }
+
+    // Add the player to the list of targers of the camera
+    private void AddPlayer()
+    {
+        GameObject[] playerArray = GameObject.FindGameObjectsWithTag("Player");
+        GameObject player = playerArray[0];
+        EnemyManager em = new EnemyManager();
+        em.m_Instance = player;
+        em.m_PlayerNumber = enemyNumber;
+        m_Enemies.Add(em);
+    }
+
+    // Make sure the camera won't move, just focus on the player
+    public void GameOver() 
+    {
+        this.playerKilled = true;
+        m_Enemies.Clear();
+        AddPlayer();
+    }
 }

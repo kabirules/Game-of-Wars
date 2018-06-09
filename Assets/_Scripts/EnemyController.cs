@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour {
 
     public int enemyNumber;
 
-    public Boolean isKilled;
+    public Boolean killed;
 
     // Use this for initialization
     void Start () {
@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (!isKilled)
+        if (!killed)
         {
             transform.position += transform.forward * Time.deltaTime * movementSpeed;
             if (Time.time > nextFire)
@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour {
             GameObject target = playerArray[0];
             Transform targetTransform = target.GetComponent(typeof(Transform)) as Transform;
             transform.LookAt(targetTransform.position, transform.up);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(1.5f);
         }
     }
 

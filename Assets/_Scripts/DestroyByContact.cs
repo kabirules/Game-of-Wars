@@ -22,7 +22,15 @@ public class DestroyByContact : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider other) 
-    {
+    {	
+		if (gameController == null)
+		{
+			gameController = RetrieveGameController();
+		}
+		if (gameController.playerKilled)
+		{
+			return;
+		}
         if (other.tag == "Boundary")
         {
             return;
@@ -30,12 +38,14 @@ public class DestroyByContact : MonoBehaviour {
         //Instantiate(explosion, transform.position, transform.rotation);
         if (other.tag == "Player")
         {
-            //Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+			PlayerMovement playerMovement = other.gameObject.GetComponent<PlayerMovement>();
+			playerMovement.killed = true;
+            Instantiate(blood, other.transform.position, other.transform.rotation);
             //gameController.GameOver ();
         }
         if (other.tag == "Enemy")
         {
-			EnemyController EnemyController = other.gameObject.GetComponent<EnemyController>();
+			EnemyController enemyController = other.gameObject.GetComponent<EnemyController>();
 			if (gameController == null) {
 				gameController = RetrieveGameController();
 			}
@@ -43,13 +53,11 @@ public class DestroyByContact : MonoBehaviour {
 			if (this.playerEM==null) {
 				this.playerEM = GetPlayerEM();
 			}
-			this.playerEM.m_PlayerNumber = EnemyController.enemyNumber;
-			gameController.m_Enemies[EnemyController.enemyNumber]=this.playerEM;
-			// Destroy object, but play dead animation first. Will be destroyed in EnemyController
-			EnemyController.isKilled = true;
-			//Destroy(other.gameObject);
+			this.playerEM.m_PlayerNumber = enemyController.enemyNumber;
+			gameController.m_Enemies[enemyController.enemyNumber]=this.playerEM;
+			// Destroy object, but play dead animation first. Will be destroyed in enemyController
+			enemyController.killed = true;
             Instantiate(blood, other.transform.position, other.transform.rotation);
-            //gameController.GameOver ();
         }		
         //Destroy(other.gameObject);
 		//DeactivateChildren(other.gameObject, true);

@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour {
     public float fireRate;
     private float nextFire;
 
+    public GameController gameController;
+
     Vector3 movement;                   // The vector to store the direction of the player's movement.
     Animator anim;                      // Reference to the animator component.
     Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
@@ -24,9 +26,19 @@ public class PlayerMovement : MonoBehaviour {
     private float v;
     private bool attack = false;
 
+    public bool killed;
+
     // Use this for initialization
     void Start () {
-		
+        // Unkill the player
+        killed = false;
+        // Get the gameController
+        GameObject[] gameControllerArray = GameObject.FindGameObjectsWithTag("GameController");
+        GameObject gameControllerObject = gameControllerArray[0];
+        gameController = gameControllerObject.GetComponent<GameController>();
+        // Make sure the player has proper scale
+		Vector3 newScale = new Vector3(1f, 1f, 1f);
+        transform.localScale = newScale;
 	}
 
     void Awake()
@@ -43,32 +55,45 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate ()
     {
-        //Attack
-        if (TCKInput.GetButtonDown("Button0") && Time.time > nextFire)
+        if (!this.killed) 
         {
-            attack = true;
-        }
+            //Attack
+            if (TCKInput.GetButtonDown("Button0") && Time.time > nextFire)
+            {
+                attack = true;
+            }
 
-        // Store the input axes.
-#if UNITY_EDITOR
-        // h = Input.GetAxisRaw("Horizontal");
-        // v = Input.GetAxisRaw("Vertical");
-#endif
-#if UNITY_ANDROID
-        h = TCKInput.GetAxis("Joystick0", AxisType.X);
-        v = TCKInput.GetAxis("Joystick0", AxisType.Y);
-#endif
+            // Store the input axes.
+    #if UNITY_EDITOR
+            // h = Input.GetAxisRaw("Horizontal");
+            // v = Input.GetAxisRaw("Vertical");
+    #endif
+    #if UNITY_ANDROID
+            h = TCKInput.GetAxis("Joystick0", AxisType.X);
+            v = TCKInput.GetAxis("Joystick0", AxisType.Y);
+    #endif
 
-        // Move the player around the scene.
-        Move(h, v);
+            // Move the player around the scene.
+            Move(h, v);
 
-        // Turn the player to face the mouse cursor.
-        Turning(h, v);
+            // Turn the player to face the mouse cursor.
+            Turning(h, v);
 
-        if (attack)
-        {
-            Shoot();
-            attack = false;
+            if (attack)
+            {
+                Shoot();
+                attack = false;
+            }
+        } else {
+            // Player is dead, make it smaller until is almost invisble and destroy it.
+            GetComponent<Animator>().enabled = false;
+            Vector3 scale = transform.localScale;
+            Vector3 newScale = new Vector3(scale.x*0.95f, scale.y*0.95f, scale.z*0.95f);
+            transform.localScale = newScale;
+            if (newScale.x < 0.1f)
+            {
+                gameController.GameOver();
+            }
         }
     }
 
