@@ -40,25 +40,9 @@ public class PlayerMovement : MonoBehaviour {
         playerTransform = GetComponent<Transform>();
     }
 
-    void Update()
-    {
-        // Move the player around the scene.
-        Move(h, v);
-
-        // Turn the player to face the mouse cursor.
-        Turning(h, v);
-
-        if (attack)
-        {
-            Shoot();
-            attack = false;
-        }
-    }
-
-        // Update is called once per frame
+    // Update is called once per frame
     void FixedUpdate ()
     {
-
         //Attack
         if (TCKInput.GetButtonDown("Button0") && Time.time > nextFire)
         {
@@ -75,11 +59,21 @@ public class PlayerMovement : MonoBehaviour {
         v = TCKInput.GetAxis("Joystick0", AxisType.Y);
 #endif
 
+        // Move the player around the scene.
+        Move(h, v);
+
+        // Turn the player to face the mouse cursor.
+        Turning(h, v);
+
+        if (attack)
+        {
+            Shoot();
+            attack = false;
+        }
     }
 
     void Move(float h, float v)
     {
-        Debug.Log("h -> " + h + " v -> " + v);
         // Set the movement vector based on the axis input.
         movement.Set(h, 0f, v);
 
@@ -92,8 +86,6 @@ public class PlayerMovement : MonoBehaviour {
             newPosition = new Vector3(transform.position.x, 0.5f, transform.position.z);
         // Move the player to it's current position plus the movement.
         playerRigidbody.MovePosition(newPosition + movement);
-        Debug.Log("newPosition -> " + newPosition);
-        Debug.Log("movement -> " + movement);
     }
 
     void Turning(float h, float v)
@@ -109,8 +101,4 @@ public class PlayerMovement : MonoBehaviour {
         nextFire = Time.time + fireRate;
         Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
     }
-
-
-
-
 }
