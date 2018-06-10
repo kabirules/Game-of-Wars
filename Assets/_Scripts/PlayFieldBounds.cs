@@ -24,7 +24,7 @@ public class PlayFieldBounds : MonoBehaviour {
 		{
 			float newX;
 			float newZ;
-			if (other.gameObject.transform.position.x>0)
+			if (other.gameObject.transform.position.x > 0)
 			{
 				newX = other.gameObject.transform.position.x-0.5f;
 			}
@@ -32,7 +32,7 @@ public class PlayFieldBounds : MonoBehaviour {
 			{
 				newX = other.gameObject.transform.position.x+0.5f;
 			}
-			if (other.gameObject.transform.position.z>0)
+			if (other.gameObject.transform.position.z > 0)
 			{
 				newZ = other.gameObject.transform.position.z-0.5f;
 			}
@@ -42,12 +42,6 @@ public class PlayFieldBounds : MonoBehaviour {
 			}			
 			Vector3 getBack = new Vector3(newX, other.gameObject.transform.position.y, newZ);
 			other.gameObject.transform.position = getBack;
-			Debug.Log(other.gameObject.transform.position.x);
 		}
 	}
-
-    void OnTriggerEnter(Collider other) 
-    {
-
-	}	
 }

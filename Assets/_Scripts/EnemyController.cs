@@ -23,6 +23,10 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        // avoid rotation
+        Quaternion q = transform.rotation;
+        q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
+        transform.rotation = q;
         if (!killed)
         {
             transform.position += transform.forward * Time.deltaTime * movementSpeed;
