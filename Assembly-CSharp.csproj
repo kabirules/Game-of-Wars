@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\CameraControl.cs" />
+     <Compile Include="Assets\_Scripts\CollisionsForKinematics.cs" />
      <Compile Include="Assets\_Scripts\DestroyByContact.cs" />
      <Compile Include="Assets\_Scripts\DestroyByTime.cs" />
      <Compile Include="Assets\_Scripts\EnemyController.cs" />
@@ -59,6 +60,7 @@
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\Mover.cs" />
      <Compile Include="Assets\_Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\_Scripts\PlayFieldBounds.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
