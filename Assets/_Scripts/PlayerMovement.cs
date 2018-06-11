@@ -106,9 +106,9 @@ public class PlayerMovement : MonoBehaviour {
         movement = movement.normalized * speed * Time.deltaTime;
 
         // Avoid the player to 'fly'
-        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        if (newPosition.y != 0.6f)
-            newPosition = new Vector3(transform.position.x, 0.6f, transform.position.z);
+        Vector3 newPosition = new Vector3(transform.position.x, 0.6f, transform.position.z);
+        //if (newPosition.y != 0.6f)
+            //newPosition = new Vector3(transform.position.x, 0.6f, transform.position.z);
         // Move the player to it's current position plus the movement.
         playerRigidbody.MovePosition(newPosition + movement);
     }
