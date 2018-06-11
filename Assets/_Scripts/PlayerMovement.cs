@@ -52,6 +52,11 @@ public class PlayerMovement : MonoBehaviour {
         playerTransform = GetComponent<Transform>();
     }
 
+    void Update ()
+    {
+        FixedUpdate();
+    }
+
     // Update is called once per frame
     void FixedUpdate ()
     {
@@ -105,8 +110,10 @@ public class PlayerMovement : MonoBehaviour {
         // Normalise the movement vector and make it proportional to the speed per second.
         movement = movement.normalized * speed * Time.deltaTime;
 
+        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
         // Avoid the player to 'fly'
-        Vector3 newPosition = new Vector3(transform.position.x, 0.6f, transform.position.z);
+        //Vector3 newPosition = new Vector3(transform.position.x, 0.6f, transform.position.z);
         //if (newPosition.y != 0.6f)
             //newPosition = new Vector3(transform.position.x, 0.6f, transform.position.z);
         // Move the player to it's current position plus the movement.
