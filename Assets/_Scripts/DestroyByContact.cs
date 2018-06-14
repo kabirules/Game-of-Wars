@@ -8,6 +8,8 @@ public class DestroyByContact : MonoBehaviour {
 	private GameController gameController;
 	private EnemyManager playerEM;
 
+    public int scoreValue;
+
 	// Use this for initialization
 	void Start () {
 		// Get player to replace it by the dead enemy in the enemies list
@@ -58,6 +60,7 @@ public class DestroyByContact : MonoBehaviour {
 			// Destroy object, but play dead animation first. Will be destroyed in enemyController
 			enemyController.killed = true;
             Instantiate(blood, other.transform.position, other.transform.rotation);
+			this.gameController.AddScore(1);
         }		
         //Destroy(other.gameObject);
 		//DeactivateChildren(other.gameObject, true);

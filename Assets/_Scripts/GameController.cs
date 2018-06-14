@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
@@ -19,9 +20,21 @@ public class GameController : MonoBehaviour {
     private int enemyNumber = 0; // Assign a number to every enemy. The player will be number 0.
 
     public bool playerKilled;
+    public Text textGameOver;
+    public Text textKills;	
+    public Button homeButton;
+    public Button againButton;
+
+    private int score;
 
     void Start()
     {
+        this.score = 0;
+        this.playerKilled = false;
+        this.textGameOver.text = "";
+        this.textKills.text = "Kills: -";
+        this.homeButton.gameObject.SetActive(false);
+        this.againButton.gameObject.SetActive(false);
         // Add the player in the array to set the camera position/rotation
         AddPlayer();
 
@@ -84,10 +97,24 @@ public class GameController : MonoBehaviour {
         m_Enemies.Add(em);
     }
 
+    public void AddScore (int newScoreValue)
+    {
+        score += newScoreValue;
+        UpdateScore ();
+    }
+
+    void UpdateScore ()
+    {
+        textKills.text = "Kills: " + score;
+    }    
+
     // Make sure the camera won't move, just focus on the player
     public void GameOver() 
     {
         this.playerKilled = true;
+        this.textGameOver.text = "GAME OVER!";
+        this.homeButton.gameObject.SetActive(true);
+        this.againButton.gameObject.SetActive(true);
         m_Enemies.Clear();
         AddPlayer();
     }
