@@ -2,6 +2,7 @@ Android
 PlayerPath?
 E:/Disco F/Unity/Game of Wars/gameOfWars.apk
 SceneListBegin?
+Assets/_Scenes/Home.unity
 Assets/_Scenes/Level1a.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -123,10 +124,14 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayFieldBounds
 cbdbd80cce13925c28c0a72e0035c808 Assembly-CSharp.dll:TouchControlsKit.TCKJoystick
+c55f73f8f1562b6824faf4063dd4b0fd Assembly-CSharp.dll:.DestroyByTime
 7ed675ea893f8dd3551d5ec992b2873b Assembly-CSharp.dll:Examples.TwoDGun
+55a7a92d69b6dcdacb44681142ae5dd5 Assembly-CSharp.dll:.LevelLauncherHome
 804fa89bdced9e08b99c01454399794d Assembly-CSharp.dll:.GameManager
 7ce0bbdd528d8a71494e5c230ed4c54e Assembly-CSharp.dll:.LevelLoader
+7b77a055bd49789d594023969311bb17 Assembly-CSharp.dll:.LevelLauncherLevel1
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TouchControlsKit.TCKInput
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -143,6 +148,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 d729c23b68c0f4e294ef4ada52809679 Assembly-CSharp.dll:.TankMovement
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CollisionsForKinematics
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CarMove
 47c51e1349e3c26403dc7438019cd5f8 Assembly-CSharp.dll:.UIDirectionControl
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
@@ -158,8 +164,9 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 67a5f2c97205d2e41a8ed7c7ce898f6e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 67a5f2c97205d2e41a8ed7c7ce898f6e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
-ac870e34a6e6cba93360ec6d963d66e5 Assembly-CSharp.dll:.EnemyController
-e0a95817d8767aba9700477fad74a7a8 Assembly-CSharp.dll:.GameController
+d921766f66a6ec47d5add1170eb91fb6 Assembly-CSharp.dll:.EnemyController
+81619c08aea6f146ba60333f5a9a801a Assembly-CSharp.dll:.GameController
+6379ad12329c851297f6d5ae52764503 Assembly-CSharp.dll:.DestroyByContact
 25365ec66501498d52d11616553a9368 Assembly-CSharp.dll:.Readme
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.rocketLifetime
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
@@ -168,7 +175,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 a764ed39791e886a53f13cfce418447e Assembly-CSharp.dll:UnityEngine.PostProcessing.PostProcessingProfile
-755694b7b9762bc0f17074af29e20050 Assembly-CSharp.dll:.PlayerMovement
+6b4b2e10c4a1e005f625715dc1d8f20d Assembly-CSharp.dll:.PlayerMovement
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.Mover
 2331ba6e53b8e5ef6bde77501534c30d Assembly-CSharp.dll:TouchControlsKit.TCKDPad
