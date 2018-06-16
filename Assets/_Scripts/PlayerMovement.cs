@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     public Transform bulletSpawn;
     public float fireRate;
     private float nextFire;
+    private AudioSource audio;
 
     public GameController gameController;
 
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour {
     void Start () {
         // Unkill the player
         killed = false;
+        audio = GetComponent<AudioSource>();
         // Get the gameController
         GameObject[] gameControllerArray = GameObject.FindGameObjectsWithTag("GameController");
         GameObject gameControllerObject = gameControllerArray[0];
@@ -130,6 +132,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Shoot() 
     {
+        audio.Play();
         nextFire = Time.time + fireRate;
         Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
     }

@@ -11,10 +11,10 @@ public class LevelLauncherLevel1 : MonoBehaviour {
     void Start()
     {
         Button btnLevel1 = level1Button.GetComponent<Button>();
-        btnLevel1.onClick.AddListener(LevelChangeLevel1a);
+        btnLevel1.onClick.AddListener(LevelChangeLevel1);
     }
 
-    public void LevelChangeLevel1a() {
-        Application.LoadLevel("Level1a");
+    public void LevelChangeLevel1() {
+        Application.LoadLevel("Level1");
     }
 }

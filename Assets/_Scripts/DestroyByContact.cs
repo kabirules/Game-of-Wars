@@ -16,6 +16,7 @@ public class DestroyByContact : MonoBehaviour {
 		this.playerEM = GetPlayerEM();
 	
 		gameController = RetrieveGameController();
+
 	}
 	
 	// Update is called once per frame
