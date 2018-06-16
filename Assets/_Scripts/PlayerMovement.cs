@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour {
     public float fireRate;
     private float nextFire;
     private AudioSource audio;
+    public AudioClip cry;
+    public AudioClip shot;
 
     public GameController gameController;
 
@@ -28,6 +30,8 @@ public class PlayerMovement : MonoBehaviour {
     private bool attack = false;
 
     public bool killed;
+    public bool cried;
+
 
     // Use this for initialization
     void Start () {
@@ -92,7 +96,13 @@ public class PlayerMovement : MonoBehaviour {
                 attack = false;
             }
         } else {
-            // Player is dead, make it smaller until is almost invisble and destroy it.
+            // Player is dead, play dead sound once...
+            if (!cried) 
+            {
+                audio.PlayOneShot(cry);
+                cried = true;
+            }
+            // ... and make it smaller until is almost invisble and destroy it.
             GetComponent<Animator>().enabled = false;
             Vector3 scale = transform.localScale;
             Vector3 newScale = new Vector3(scale.x*0.95f, scale.y*0.95f, scale.z*0.95f);
@@ -132,7 +142,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Shoot() 
     {
-        audio.Play();
+        audio.PlayOneShot(shot);
         nextFire = Time.time + fireRate;
         Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
     }
