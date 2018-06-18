@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-E:/Disco F/Unity/Game of Wars/gameOfWars1.apk
+E:/Disco F/Unity/Game of Wars/gameOfWars2.apk
 SceneListBegin?
 Assets/_Scenes/Home.unity
 Assets/_Scenes/Level1.unity
@@ -185,3 +185,4 @@ a73749e8baebbea2010e7d06edc95232 Assembly-CSharp.dll:.TankHealth
 ba8d22a92b2908a97be4b61c83e8deb8 Assembly-CSharp.dll:.ShellExplosion
 d3484a3d82bdf5aaf58e661ada3eb1a1 Assembly-CSharp.dll:.CameraControl
 307d9f491fea791345eb6aa66e84c179 Assembly-CSharp.dll:Examples.TwoDCameraFollow
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.HomeController

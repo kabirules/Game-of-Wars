@@ -41,6 +41,14 @@ public class GameController : MonoBehaviour {
         StartCoroutine(SpawnWaves());
     }
 
+    void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            Application.LoadLevel("Home"); 
+        }
+    }
+
     IEnumerator SpawnWaves()
     {
         yield return new WaitForSeconds(startWait);
