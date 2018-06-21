@@ -20,21 +20,28 @@ public class GameController : MonoBehaviour {
     private int enemyNumber = 0; // Assign a number to every enemy. The player will be number 0.
 
     public bool playerKilled;
+    public bool levelCompleted;
     public Text textGameOver;
-    public Text textKills;	
+    public Text textKills;
+    public Text textInfo;
     public Button homeButton;
     public Button againButton;
+    public Button nextButton;
 
     private int score;
+    public int enemiesToKill = 3;
 
     void Start()
     {
         this.score = 0;
         this.playerKilled = false;
+        this.levelCompleted = false;
         this.textGameOver.text = "";
+        this.textInfo.text = "Kill " + this.enemiesToKill + " enemies!";
         this.textKills.text = "Kills: -";
         this.homeButton.gameObject.SetActive(false);
         this.againButton.gameObject.SetActive(false);
+        this.nextButton.gameObject.SetActive(false);
         // Add the player in the array to set the camera position/rotation
         AddPlayer();
 
@@ -54,7 +61,8 @@ public class GameController : MonoBehaviour {
         yield return new WaitForSeconds(startWait);
        // while (!playerKilled)
        // {
-            for (int i = 0; i < hazardCount && !playerKilled; i++)
+            this.textInfo.text = "";
+            for (int i = 0; i < hazardCount && !this.playerKilled && !this.levelCompleted; i++)
             {
                 //Instantiate a new enemy
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), 
@@ -107,13 +115,17 @@ public class GameController : MonoBehaviour {
 
     public void AddScore (int newScoreValue)
     {
-        score += newScoreValue;
+        this.score += newScoreValue;
         UpdateScore ();
+        if (this.score >= this.enemiesToKill)
+        {
+            LevelCompleted();
+        }
     }
 
     void UpdateScore ()
     {
-        textKills.text = "Kills: " + score;
+        textKills.text = "Kills: " + this.score;
     }    
 
     // Make sure the camera won't move, just focus on the player
@@ -125,5 +137,14 @@ public class GameController : MonoBehaviour {
         this.againButton.gameObject.SetActive(true);
         m_Enemies.Clear();
         AddPlayer();
+    }
+
+    public void LevelCompleted()
+    {
+        this.levelCompleted = true;
+        this.textInfo.text = "Level completed!";
+        this.nextButton.gameObject.SetActive(true);
+        m_Enemies.Clear();
+        AddPlayer();        
     }
 }

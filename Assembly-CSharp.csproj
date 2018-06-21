@@ -61,6 +61,7 @@
      <Compile Include="Assets\_Scripts\HomeController.cs" />
      <Compile Include="Assets\_Scripts\LevelLauncherHome.cs" />
      <Compile Include="Assets\_Scripts\LevelLauncherLevel1.cs" />
+     <Compile Include="Assets\_Scripts\LevelLauncherLevel2.cs" />
      <Compile Include="Assets\_Scripts\Mover.cs" />
      <Compile Include="Assets\_Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\_Scripts\PlayFieldBounds.cs" />
