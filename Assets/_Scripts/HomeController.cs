@@ -6,17 +6,23 @@ using GoogleMobileAds.Api;
 
 public class HomeController : MonoBehaviour {
 
-	private adShown = false;
+	private bool adShown;
+	private BannerView bannerView;
 
 	// Use this for initialization
 	void Start () {
-		// ADMOB
-		Init();
-		RequestInterstitial();
-		// Create an empty ad request.
-    	AdRequest request = new AdRequest.Builder().Build();
-    	// Load the interstitial with the request.
-    	interstitial.LoadAd(request);
+        #if UNITY_ANDROID
+            string appId = "ca-app-pub-2228911308495304~5361337236"; // Correct
+        #elif UNITY_IPHONE
+            string appId = "ca-app-pub-3940256099942544~1458002511";
+        #else
+            string appId = "unexpected_platform";
+        #endif
+
+        // Initialize the Google Mobile Ads SDK.
+        MobileAds.Initialize(appId);
+
+        this.RequestBanner();
 	}
 	
 	// Update is called once per frame
@@ -25,41 +31,27 @@ public class HomeController : MonoBehaviour {
         {
             Application.Quit(); 
         }
-		if (interstitial.IsLoaded() && !adShown) {
-    		interstitial.Show();
-			adShown = true;
-			//interstitial.Destroy();
-  		}
-
 	}
 
-	void Init()
-	{
-		#if UNITY_ANDROID
-            string appId = "ca-app-pub-2228911308495304~5361337236";
+    private void RequestBanner()
+    {
+        #if UNITY_ANDROID
+            string adUnitId = "ca-app-pub-3940256099942544/6300978111"; // for testing
         #elif UNITY_IPHONE
-            string appId = "unexpected_platform";
+            string adUnitId = "ca-app-pub-3940256099942544/2934735716";
         #else
-            string appId = "unexpected_platform";
+            string adUnitId = "unexpected_platform";
         #endif
-		// Initialize the Google Mobile Ads SDK.
-        MobileAds.Initialize(appId);
-	}
 
-	private void RequestInterstitial()
-	{
-		#if UNITY_ANDROID
-			string adUnitId = "ca-app-pub-2228911308495304/9919954379";
-		#elif UNITY_IPHONE
-			string adUnitId = "unexpected_platform";
-		#else
-			string adUnitId = "unexpected_platform";
-		#endif
+        // Create a 320x50 banner at the top of the screen.
+        bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
 
-		// Initialize an InterstitialAd.
-		string adUnitId = "ca-app-pub-3940256099942544/1033173712"; //TODO test - remove
-		InterstitialAd interstitial = new InterstitialAd(adUnitId);
-	}
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build();
+
+        // Load the banner with the request.
+        bannerView.LoadAd(request);		
+    }
 
 
 }
