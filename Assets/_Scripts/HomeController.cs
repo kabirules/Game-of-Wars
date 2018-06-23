@@ -12,7 +12,7 @@ public class HomeController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         #if UNITY_ANDROID
-            string appId = "ca-app-pub-2228911308495304~5361337236"; // Correct
+            string appId = "ca-app-pub-2228911308495304~5361337236"; //confirmed
         #elif UNITY_IPHONE
             string appId = "ca-app-pub-3940256099942544~1458002511";
         #else
@@ -36,7 +36,7 @@ public class HomeController : MonoBehaviour {
     private void RequestBanner()
     {
         #if UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/6300978111"; // for testing
+            string adUnitId = "ca-app-pub-2228911308495304/7165373495"; //confirmed
         #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/2934735716";
         #else
