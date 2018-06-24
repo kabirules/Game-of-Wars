@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-E:/Disco F/Unity/Game of Wars/gameOfWars1.0.1.apk
+E:/Disco F/Unity/Game of Wars/gameOfWars1.0.2.apk
 SceneListBegin?
 Assets/_Scenes/Home.unity
 Assets/_Scenes/Level1.unity
@@ -134,7 +134,7 @@ c55f73f8f1562b6824faf4063dd4b0fd Assembly-CSharp.dll:.DestroyByTime
 55a7a92d69b6dcdacb44681142ae5dd5 Assembly-CSharp.dll:.LevelLauncherHome
 804fa89bdced9e08b99c01454399794d Assembly-CSharp.dll:.GameManager
 7ce0bbdd528d8a71494e5c230ed4c54e Assembly-CSharp.dll:.LevelLoader
-7b77a055bd49789d594023969311bb17 Assembly-CSharp.dll:.LevelLauncherLevel1
+4f418b27247debc6ffa2e58d12cbee06 Assembly-CSharp.dll:.LevelLauncherLevel1
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TouchControlsKit.TCKInput
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -188,3 +188,4 @@ a73749e8baebbea2010e7d06edc95232 Assembly-CSharp.dll:.TankHealth
 ba8d22a92b2908a97be4b61c83e8deb8 Assembly-CSharp.dll:.ShellExplosion
 d3484a3d82bdf5aaf58e661ada3eb1a1 Assembly-CSharp.dll:.CameraControl
 307d9f491fea791345eb6aa66e84c179 Assembly-CSharp.dll:Examples.TwoDCameraFollow
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AdsController

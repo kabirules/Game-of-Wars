@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scripts\AdsController.cs" />
      <Compile Include="Assets\_Scripts\CameraControl.cs" />
      <Compile Include="Assets\_Scripts\CollisionsForKinematics.cs" />
      <Compile Include="Assets\_Scripts\DestroyByContact.cs" />

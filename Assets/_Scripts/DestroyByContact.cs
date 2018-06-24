@@ -32,8 +32,6 @@ public class DestroyByContact : MonoBehaviour {
 		}
 		if (gameController.playerKilled || gameController.levelCompleted)
 		{
-			Debug.Log("gameController.playerKilled ->" + gameController.playerKilled);
-			Debug.Log("gameController.levelCompleted ->" + gameController.levelCompleted);
 			return;
 		}
         if (other.tag == "Boundary")

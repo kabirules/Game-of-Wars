@@ -15,7 +15,6 @@ public class CollisionsForKinematics : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision collision) 
 	{
-		Debug.Log(collision);
 		ContactPoint contact = collision.contacts[0];
 		Vector3 pos = contact.point;
 		GameObject[] playerArray = GameObject.FindGameObjectsWithTag("Player");
@@ -25,7 +24,6 @@ public class CollisionsForKinematics : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other)
     {
-		//Debug.Log("OnTriggerEnter");
 		if (other.tag == "Bullet")
 		{
 			Destroy(other.gameObject);
