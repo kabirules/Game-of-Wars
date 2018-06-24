@@ -107,10 +107,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 958
-  m_MinSize: {x: 538, y: 492}
+  m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 51
+  controlID: 64
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 85
+  controlID: 65
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 155
+  controlID: 86
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -279,15 +279,15 @@ MonoBehaviour:
     y: 0
     width: 560
     height: 958
-  m_MinSize: {x: 102, y: 121}
+  m_MinSize: {x: 277, y: 71}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 20}
+  m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
   - {fileID: 20}
   - {fileID: 21}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -706,9 +706,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 8e010000
     m_LastClickedID: 0
-    m_ExpandedIDs: 4000ffff3602ffff7403ffff3e0bffff820fffff8e0fffff4a30ffffd831ffffa032ffff3e39ffff7e3dffff863dffff2c57ffff1659ffff3a5affffd860ffff1865ffff2065ffffa477ffff3279fffffa79ffff9880ffffd884ffffe084ffff0aa4ffffd6a5ffffdca6ffff7aadffffbab1ffffc2b1ffff84bcffff52beffff56bffffff8c5ffff3ccaffff48cafffff0fbffff00000000
+    m_ExpandedIDs: f0fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -769,19 +769,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/GoogleMobileAds/Platforms/Android
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/GoogleMobileAds/Platforms/Android
+  - Assets
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\Disco F\Unity\Game of Wars
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 45}
-    m_SelectedIDs: 183e0000
-    m_LastClickedID: 15896
+    m_SelectedIDs: 1c2b0000
+    m_LastClickedID: 11036
     m_ExpandedIDs: 00000000ae0800001c2b0000d42c0000c83a0000ba400000e442000016430000d8430000f6450000924c0000304e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -810,7 +810,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001c2b0000d42c0000c83a0000ba400000e4420000d8430000304e0000
+    m_ExpandedIDs: 00000000ae0800001c2b0000d42c0000c83a0000ba400000e442000016430000d8430000f6450000924c0000304e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -837,7 +837,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 0022000064220000722a00001a050000e821000058220000de210000f421000094a0fcff1e27fcffe021000076220000cc220000a4050000a8050000b0050000b2050000b40500003e0800006c1c000084070000a0080000522c000074e3ffff1e3f0000204c0000403f0000b0430000c83900007c4a000000000000d8480000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
