@@ -16,7 +16,7 @@ public class AdsController : MonoBehaviour {
         #if UNITY_ANDROID
             string appId = "ca-app-pub-2228911308495304~5361337236"; //confirmed
         #elif UNITY_IPHONE
-            string appId = "ca-app-pub-3940256099942544~1458002511";
+            string appId = "ca-app-pub-2228911308495304~2948884166"; //confirmed
         #else
             string appId = "unexpected_platform";
         #endif
@@ -37,7 +37,8 @@ public class AdsController : MonoBehaviour {
             string adUnitId = "ca-app-pub-2228911308495304/7165373495"; //confirmed
             // string adUnitId = "ca-app-pub-3940256099942544/6300978111"; //test
         #elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/2934735716";
+            string adUnitId = "ca-app-pub-2228911308495304/7410873351"; //confirmed
+            // string adUnitId = "ca-app-pub-3940256099942544/2934735716"; //test
         #else
             string adUnitId = "unexpected_platform";
         #endif

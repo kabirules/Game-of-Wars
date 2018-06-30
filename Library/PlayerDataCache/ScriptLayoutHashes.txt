@@ -1,6 +1,6 @@
-Android
+iOS
 PlayerPath?
-E:/Disco F/Unity/Game of Wars/gameOfWars1.0.2.apk
+/Users/javierfont/Development/Unity/Game-of-Wars/Builds/Device1.0.3
 SceneListBegin?
 Assets/_Scenes/Home.unity
 Assets/_Scenes/Level1.unity
@@ -128,6 +128,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayFieldBounds
 cbdbd80cce13925c28c0a72e0035c808 Assembly-CSharp.dll:TouchControlsKit.TCKJoystick
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AdsController
 84d810e98eccf94193818e3829561cbc Assembly-CSharp.dll:.LevelLauncherLevel2
 c55f73f8f1562b6824faf4063dd4b0fd Assembly-CSharp.dll:.DestroyByTime
 7ed675ea893f8dd3551d5ec992b2873b Assembly-CSharp.dll:Examples.TwoDGun
@@ -188,4 +189,3 @@ a73749e8baebbea2010e7d06edc95232 Assembly-CSharp.dll:.TankHealth
 ba8d22a92b2908a97be4b61c83e8deb8 Assembly-CSharp.dll:.ShellExplosion
 d3484a3d82bdf5aaf58e661ada3eb1a1 Assembly-CSharp.dll:.CameraControl
 307d9f491fea791345eb6aa66e84c179 Assembly-CSharp.dll:Examples.TwoDCameraFollow
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AdsController
