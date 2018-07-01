@@ -1,6 +1,6 @@
 iOS
 PlayerPath?
-/Users/javierfont/Development/Unity/Game-of-Wars/Builds/Device1.0.3
+/Users/javierfont/Development/Unity/Game-of-Wars/Builds/Device1.1.3
 SceneListBegin?
 Assets/_Scenes/Home.unity
 Assets/_Scenes/Level1.unity
